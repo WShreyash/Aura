@@ -3,29 +3,27 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import MessageInput from './Components/MessageInput';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { MessageItem } from './Components/MessageItem';
-import Animated, { CurvedTransition, Easing } from 'react-native-reanimated';
 
 export default function App() {
 
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState();
   const addMessage = () => {
-    setMessages([text, ...messages])
+    setMessages([...messages, text])
     setText('');
   };
 
   const onChangeText = (txt) => {
-    setText(txt)
+    setText(txt);
   }
 
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.messageView} >
-          <Animated.FlatList data={messages}
+          <FlatList data={messages}
             contentContainerStyle={{ gap: 12, paddingHorizontal: 12, paddingTop:12 }}
             keyExtractor={(item, index) => index}
-            itemLayoutAnimation={CurvedTransition.duration(450).easingY(Easing.bezier(0.05, 0.7, 0.1, 1))}
             renderItem={({ item }) => <MessageItem title={item} />
             } />
         </View>
@@ -41,8 +39,6 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

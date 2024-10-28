@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text } from "react-native"
+import Animated, { Easing, ZoomIn } from "react-native-reanimated";
 
 export const MessageItem = ({ title }) => (
-    <View style={styles.item}>
+    <Animated.View style={styles.item}
+        entering={ZoomIn.duration(450).easing(Easing.bezier(0.05, 0.7, 0.1, 1))}>
         <Text style={styles.title}>{title}</Text>
-    </View>
+    </Animated.View>
 );
 
 const styles = StyleSheet.create({
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 18,
         paddingVertical: 12,
         borderRadius: 32,
-        alignSelf:'flex-end'
+        alignSelf: 'flex-end'
     },
     title: {
         textAlign: 'right',

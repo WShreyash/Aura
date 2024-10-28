@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 
-export default function MessageInput({text, onChangeText}) {
+export default function MessageInput({ text, onChangeText }) {
   return (
     <KeyboardAvoidingView style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <TextInput
-        onChangeText={(text)=>onChangeText(text)}
+        onChangeText={(text) => onChangeText(text)}
         value={text}
         multiline
         numberOfLines={1}
@@ -20,12 +20,12 @@ export default function MessageInput({text, onChangeText}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
   },
   input: {
     height: 46,
     borderWidth: 1.6,
-    borderColor:'#888',
+    borderColor: '#888',
     paddingHorizontal: 16,
     borderRadius: 35,
   },
