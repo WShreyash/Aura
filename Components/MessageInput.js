@@ -1,46 +1,32 @@
 import React from 'react';
-import { View, StyleSheet, TextInput,KeyboardAvoidingView,Platform } from 'react-native';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 
-export default function MessageInput() {
+export default function MessageInput({ text, onChangeText }) {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView
-          style={styles.keyboardAvoidingView}
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        >
-        <View style={styles.container}>
-          <TextInput
-            multiline
-            style={styles.input}
-            placeholder="Enter Message"
-          />
-        </View>
-        </KeyboardAvoidingView>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <KeyboardAvoidingView style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <TextInput
+        onChangeText={(text) => onChangeText(text)}
+        value={text}
+        multiline
+        numberOfLines={1}
+        style={styles.input}
+        placeholder="Enter Message"
+      />
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    justifyContent:'flex-end',
-  },
-  keyboardAvoidingView: {
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
   container: {
-    flexDirection:'row',
-    padding: 10,
+    flex: 1,
   },
   input: {
-    height: 40,
-    borderWidth: 0.6,
-    padding: 10,
-    width: '93%',
+    height: 46,
+    borderWidth: 1.6,
+    borderColor: '#888',
+    paddingHorizontal: 16,
     borderRadius: 35,
   },
 });
