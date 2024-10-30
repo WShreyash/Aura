@@ -1,19 +1,24 @@
-import { StyleSheet, Text } from "react-native"
+import { KeyboardAvoidingView, StyleSheet, Text,Platform } from "react-native"
 import Animated, { Easing, ZoomIn } from "react-native-reanimated";
 
 export const MessageItem = ({ title }) => (
-    <Animated.View style={styles.item}
+    
+      <Animated.View style={styles.item}
         entering={ZoomIn.duration(450).easing(Easing.bezier(0.05, 0.7, 0.1, 1))}>
         <Text style={styles.title}>{title}</Text>
     </Animated.View>
+           
 );
 
 const styles = StyleSheet.create({
+    container:{
+      flex:1,
+    },
     item: {
         backgroundColor: '#ddd',
-        paddingHorizontal: 18,
+        paddingHorizontal: 16,
         paddingVertical: 12,
-        borderRadius: 32,
+        borderRadius: 35,
         alignSelf: 'flex-end'
     },
     title: {

@@ -3,9 +3,7 @@ import { StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-nat
 
 export default function MessageInput({ text, onChangeText }) {
   return (
-    <KeyboardAvoidingView style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
+  
       <TextInput
         onChangeText={(text) => onChangeText(text)}
         value={text}
@@ -14,7 +12,6 @@ export default function MessageInput({ text, onChangeText }) {
         style={styles.input}
         placeholder="Enter Message"
       />
-    </KeyboardAvoidingView>
   );
 }
 
@@ -23,10 +20,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   input: {
-    height: 46,
+    flex:1,
+    height: 40,
     borderWidth: 1.6,
     borderColor: '#888',
     paddingHorizontal: 16,
     borderRadius: 35,
+    padding:13,
   },
 });

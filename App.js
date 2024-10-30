@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {Platform, FlatList, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MessageInput from './Components/MessageInput';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { MessageItem } from './Components/MessageItem';
@@ -20,6 +20,8 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
+        <KeyboardAvoidingView style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.messageView} >
           <FlatList data={messages}
             contentContainerStyle={{ gap: 12, paddingHorizontal: 12, paddingTop:12 }}
@@ -35,6 +37,7 @@ export default function App() {
             <Text style={{ color: 'white' }}>Send</Text>
           </TouchableOpacity>
         </View>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
