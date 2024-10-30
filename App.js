@@ -3,6 +3,7 @@ import {Platform, FlatList, KeyboardAvoidingView, StyleSheet, Text, TouchableOpa
 import MessageInput from './Components/MessageInput';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { MessageItem } from './Components/MessageItem';
+import { Microphone } from './Components/Microphone';
 
 export default function App() {
 
@@ -31,6 +32,7 @@ export default function App() {
         </View>
         <View style={styles.bottomView}>
           <MessageInput text={text} onChangeText={onChangeText} />
+          <Microphone />
           <TouchableOpacity
             style={{ backgroundColor: '#000', paddingVertical: 12, paddingHorizontal: 24, borderRadius: 24 }}
             onPress={addMessage}>
