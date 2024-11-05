@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   bottomView: {
     flexDirection: 'row',
     gap: 12,
-    padding: 12,
+    padding: 11,
     alignItems: 'center'
   }
 });
